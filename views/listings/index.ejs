@@ -1,0 +1,120 @@
+<% layout("/layouts/boilerplate") -%>
+<style>
+  #filters {
+    display: flex;
+    align-items: center;
+  }
+  .filter{
+    margin-left: 3rem;
+    margin-top: 1rem;
+    opacity: 0.7;
+    text-align: center;
+  }
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .tax-info{
+    display: none;
+  }
+  #tax-toggler{
+    border: 2px solid rgba(0, 0, 0, 0.364);
+    border-radius: 10px;
+    height: 3.2rem;
+    margin-left: 3rem;
+    display: flex;
+    align-items: center;
+  }
+  .tax-toggler-content{
+    padding-left: 0.5rem;
+  }
+</style>
+<body>
+  <div id="filters">
+    <div class="filter">
+      <i class="fa-solid fa-fire"></i>
+      <p>trending</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-bed"></i>
+      <p>rooms</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-umbrella-beach"></i>
+      <p>beach</p>
+    </div>
+    <!-- <div class="filter">
+      <i class="fa-solid fa-city"></i>
+      <p>Iconi cities</p>
+    </div> -->
+    <div class="filter">
+      <i class="fa-solid fa-house"></i>
+      <p>cabins</p>
+    </div>
+    <div class="filter">
+      <i class="fa-regular fa-snowflake"></i>
+      <p>Arctic</p>
+    </div>
+    <div class="filter">
+      <i class="fa-brands fa-fort-awesome"></i>
+      <p>Castles</p>
+    </div>
+    <!-- <div class="filter">
+      <i class="fa-solid fa-person-skiing"></i>
+      <p>Ski-in/out</p>
+    </div> -->
+    <div class="filter">
+      <i class="fa-solid fa-gopuram"></i>
+      <p>Tower</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-sailboat"></i>
+      <p>Boats</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-water"></i>
+      <p>Lake</p>
+    </div>
+
+    <div class="form-check form-switch form-check-reverse" id="tax-toggler">
+      <div class="tax-toggler-content">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Display total before taxes</label>
+      </div>
+    </div>
+  </div>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+      <%for(listing of allListings){%>
+      <a href="http://localhost:8080/listings/<%=listing._id%>" class="listing-link">
+        <div class="card col listing-card">
+          <img src="<%=listing.image.url%>" class="card-img-top" alt="listing image" style="height: 20rem;">
+          <div class="card-body">
+            <p class="card-text">
+              <b style="font-size: 1.1rem;"><%=listing.title%></b>
+              <br>
+              &#x20B9; <%= listing.price%>/night
+              <span class="tax-info"> &nbsp;&nbsp; +18% GST</span>
+            </p>
+            <!-- <a href="http://localhost:8080/listings/<%=listing._id%>"><%=listing.title%></a> -->
+          </div>
+        </div>
+      </a>
+      <%}%>
+    </div>
+</body>
+
+<script>
+  let togglebtn = document.querySelector("#flexSwitchCheckDefault");
+  let tax_info = document.querySelectorAll(".tax-info");
+  togglebtn.addEventListener("click" , ()=>{
+    for(ele of tax_info){
+      if(ele.style.display == ""){
+        ele.style.display = "inline";
+      }
+      else{
+        ele.style.display = "";
+      }
+    }
+    // console.dir(tax_info[0]);
+  })
+</script>
