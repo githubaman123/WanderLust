@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname , "/public")));
 const storObj = MongoStore.create({
     mongoUrl : atlasUrl, // to store session information on atlas
     crypto : {
-        secret : "fkeljoiferlgkjsopgjlarmvpoaoj",
+        secret : process.env.SECRET,
     },
     touchAfter : 24*3600
 })
@@ -49,7 +49,7 @@ const storObj = MongoStore.create({
 
 let sessionObj = {
     store : storObj,
-    secret: "fkeljoiferlgkjsopgjlarmvpoaoj",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
