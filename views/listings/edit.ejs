@@ -31,6 +31,23 @@
                     Enter a valid price
                 </div>
             </div>
+
+            <div class="mb-3">
+                <label for="type" class="form-label">Listing Type</label>
+                <select id="type" name="listing[type]" class="form-select mb-3" aria-label="Default select example">
+                    <option vaule="Rooms" selected>Rooms</option>
+                    <option value="Beach">Beach</option>
+                    <option value="Iconi Cities">Iconi Cities</option>
+                    <option value="Cabins">Cabins</option>
+                    <option value="Artic">Artic</option>
+                    <option value="Castels">Castels</option>
+                    <option value="Ski-in/out">Ski-in/out</option>
+                    <option value="Tower">Tower</option>
+                    <option value="Boats">Boats</option>
+                    <option value="Lake">Lake</option>
+                  </select>
+            </div>
+
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" name="listing[location]" id="location" placeholder="Enter the location" value="<%=listing.location%>" required>

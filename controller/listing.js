@@ -9,6 +9,13 @@ module.exports.showListings = async (req,res)=>{
     res.render("listings/index.ejs" , {allListings});
 }
 
+module.exports.showFilteredListing = async (req , res)=>{
+    let {type} = req.params;
+    req.session.redirectUrl = req.originalUrl;
+    const allListings = await Listing.find({type : type});
+    res.render("listings/index.ejs" , {allListings});
+}
+
 module.exports.showListingDetails = async (req,res)=>{
     let {id} = req.params;
     let listing = await Listing.findById(`${id}`)

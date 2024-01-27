@@ -30,6 +30,9 @@ const validateListing =(req,res,next)=>{
 //get request for the home page
 router.get("/" ,wrapAsync(listingController.showListings))
 
+//get request for the home page with filter
+router.get("/filter/:type",wrapAsync(listingController.showFilteredListing))
+
 
 //get request fot creating new listing
 router.get("/new", isLoggedIn , (req,res)=>{ // if we write this below the get request of listings/:id then it will consider "new" as an id in listings/id;

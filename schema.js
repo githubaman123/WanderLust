@@ -2,6 +2,7 @@ const Joi = require('joi');
 //Server Side review Schema for server side validation;
 module.exports.listingSchema = Joi.object({
     listing : Joi.object({
+        type: Joi.string().required(),
         title: Joi.string().required(),
         description: Joi.string().required(),
         locaiton: Joi.string().required(),
